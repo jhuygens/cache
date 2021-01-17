@@ -49,13 +49,23 @@ func Del(key string) error {
 	return cache.Del(key)
 }
 
-// Expire doc ...
-func Expire(key string) error {
+// SetExpire cache
+// sec: time to expire cache in seconds
+func SetExpire(key string, sec int) error {
 	err := ValidateRegisterImplement()
 	if err != nil {
 		return err
 	}
-	return cache.Expire(key)
+	return cache.SetExpire(key, sec)
+}
+
+// GetExpireTime returns expire time in seconds
+func GetExpireTime(key string) (int, error) {
+	err := ValidateRegisterImplement()
+	if err != nil {
+		return 0, err
+	}
+	return cache.GetExpireTime(key)
 }
 
 // Clear doc ...
