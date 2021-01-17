@@ -23,21 +23,21 @@ func ValidateRegisterImplement() error {
 }
 
 // Get doc ...
-func Get(key string) (interface{}, error) {
+func Get(key string) (string, error) {
 	err := ValidateRegisterImplement()
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	return cache.Get(key)
 }
 
 // Set doc ...
-func Set(key string, v interface{}) error {
+func Set(key string, s string) error {
 	err := ValidateRegisterImplement()
 	if err != nil {
 		return err
 	}
-	return cache.Set(key, v)
+	return cache.Set(key, s)
 }
 
 // Del doc
